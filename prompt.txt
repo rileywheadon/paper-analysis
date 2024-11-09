@@ -1,0 +1,33 @@
+Here are four categories which can be used to classify the sentences of a scientific paper. Make sure that you correctly divide the text into sentences. Remember that abbreviations like "et al." do not constitute the end of a sentence. However, all sentences must end with a period or question mark.
+
+CATEGORY 1: Motivation for the research in a broad context. This type of sentence helps the reader to understand why the research is relevant, useful, and interesting.
+
+CATEGORY 2: Past research in the field, which may be experimental or theoretical. Sentences in this category may also describe the results of previous research efforts.
+
+CATEGORY 3: Descriptions of topics that remain poorly understood or descriptions of gaps in the literature that need to filled.
+
+CATEGORY 4: The methods used by the authors in this research paper. Sentences in this category may also discuss the results of this research paper.
+
+A sentence can only belong to one category. Use the context of the paragraph to determine whether a sentence is discussing the research paper itself or a previous study. Your response should be a JSON object in the following format:
+
+{
+  "abstract": [
+    {
+      "sentence": ...,
+      "position": ...,
+      "category": ...,
+    },
+    ...
+  ],
+  "introduction": [
+    {
+      "sentence": ...,
+      "position": ...,
+      "category": ...,
+    },
+    ...
+  ]
+}
+
+The "sentence" field must contain the exact sentence that was classified. The "position" is the relative position of the sentence in the text (i.e. 1 for the first sentence, 2 for the second sentence, etc.). The "category" should be one of 1, 2, 3, or 4. Now, I will provide you with an abstract followed by an introduction. Classify each of the sentences. Make sure that the first object in the "abstract" and "introduction" fields have a position of 1.
+
