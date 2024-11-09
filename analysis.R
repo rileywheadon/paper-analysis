@@ -18,13 +18,14 @@ pdata <- fromJSON("data/plos-cb-categorized.json") |>
   mutate(hasrows = map_int(nrows, length)) |>   
   filter(hasrows == 1) |>
   unnest(data) |>
-  drop_na(category) |>
   group_by(section, doi) |>
   mutate(section_length = max(position)) |>
   ungroup() |>
   mutate(relative_position = position / section_length)  |>
   mutate(word_list = map(sentence, ~ unlist(strsplit(., split = " ")))) |>
   mutate(word_count = map_int(word_list, ~ length(.))) |>
+  filter(!is.na(category))  |>
+  filter(category > 0) |>
   mutate(category = map_chr(category, categorize)) |>
   mutate(category = factor(category, levels = names)) |>
   select(doi, date, section, sentence, position, category,

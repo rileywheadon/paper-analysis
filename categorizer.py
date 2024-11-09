@@ -14,7 +14,7 @@ with open("prompt.txt", "r") as f:
     PROMPT = f.read()
 
 # Load the dataset of abstracts and introductions
-with open("plos-cb.json", "r") as f:
+with open("data/plos-cb.json", "r") as f:
     DATA = json.loads(f.read())
 
 
@@ -48,16 +48,15 @@ def main():
 
     # Get the first incomplete job
     start = len(CATEGORIZED)
-
-    # Initialize i to 3 because of the errors (~250, ~370, ~410)
     errors = 3
-    i, results = errors, []
+    i, results = 0, []
 
     # Categorize until we get 500 papers or rate limited
-    while start + i < 500 + errors:
+    while start + i < 500:
         print(f"Categorizing paper {start + i + 1}")
 
-        # Catch other exceptions here
+        # Catch exceptions here
+        # I should add better error handling but its pretty reliable
         try:
             sentences = analyze_paper(DATA[start + i])
         except Exception as e:
