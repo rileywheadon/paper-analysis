@@ -1,4 +1,4 @@
-# LLM Sentence Categorization
+# A Structural Analysis of Academic Writing 
 
 In this project I analyze abstracts and introductions from the journal [PLOS Computational Biology](https://journals.plos.org/ploscompbiol/) using [Llama 3.2](https://www.llama.com). A expository blog post on this project can be found on my website [rwheadon.dev](https://rwheadon.dev). The `data` directory contains the datasets created in this project:
 - `plos-cb.json` contains the abstracts and introductions from all 9,653 papers published in PLOS Computational Biology since the journal's inception in 2005. 
